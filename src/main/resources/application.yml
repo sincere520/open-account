@@ -1,0 +1,37 @@
+server:
+  shutdown: graceful
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  jpa:
+    show-sql: true
+    #    database-platform: mysql
+    hibernate:
+      ddl-auto: none
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/open-account?serverTimezone=UTC&characterEncoding=UTF-8
+      username: open-svc
+      password: open-pass
+  flyway:
+    user: open-svc
+    password: open-pass
+    schemas: open-account
+    url: jdbc:mysql://localhost:3306/open-account?serverTimezone=UTC&characterEncoding=UTF-8
+    enabled: true
+
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
+
+logging:
+  config: classpath:logback-local.xml
+
+# aws 의 access-key, secret-key 를 반영해야 정상 동작함
+cloud:
+  aws:
+    access-key: AKIAQWTF623KST37HS7I
+    secret-key: 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
