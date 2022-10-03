@@ -1,12 +1,23 @@
-### 고객 등록
+### 1.고객 등록1
 POST http://localhost:8080/api/v1/customers
 Content-Type: application/json
 
 {
-  "customerName": "홍길동",
-  "phoneNumber": "010-1234-5678"
+  "customerName": "박씨",
+  "phoneNumber": "010-1111-2222"
 }
 
-### 고객 조회
-GET http://localhost:8080/api/v1/customers/cus_mPKEehbj5wakXQU0
+### 2.고객 등록2
+POST http://localhost:8080/api/v1/customers
+Content-Type: application/json
 
+{
+"customerName": "철수",
+"phoneNumber": "010-1234-5678"
+}
+
+### 고객 조회1
+GET http://localhost:8080/api/v1/customers/cus_hisqntiFEJPGe7zu
+
+### 고객 조회2
+GET http://localhost:8080/api/v1/customers/cus_cjaIuZqamSxKooq3

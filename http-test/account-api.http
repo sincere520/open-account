@@ -1,105 +1,190 @@
-### 아이템 등록
+### 3.계좌 등록1
 POST http://localhost:8080/api/v1/accounts
 Content-Type: application/json
 
 {
-  "partnerToken": "ptn_NHOrj9cTvCGlYMHo",
-  "itemName": "티셔츠",
-  "itemPrice": 30000,
-  "itemOptionGroupList": [
+  "customerToken": "cus_BJGUWs9DL37kHjTR",
+  "accountName": "KB",
+  "accountAmt": 0
+}
+
+### 4.계좌 등록2
+POST http://localhost:8080/api/v1/accounts
+Content-Type: application/json
+
+{
+"customerToken": "cus_mRcb476KsQ9qHuXb",
+"accountName": "KB",
+"accountAmt": 10000
+}
+
+### 계좌 활성화1
+POST http://localhost:8080/api/v1/accounts/change-available
+Content-Type: application/json
+
+{
+  "accountToken": "acc_h2CA88hS5se45bG1"
+}
+
+### 계좌 활성화2
+POST http://localhost:8080/api/v1/accounts/change-available
+Content-Type: application/json
+
+{
+  "accountToken": "acc_6ZRmtnaWL3sBZmNg"
+}
+
+### 계좌 비활성화
+POST http://localhost:8080/api/v1/accounts/change-not-available
+Content-Type: application/json
+
+{
+  "accountToken": "acc_6ZRmtnaWL3sBZmNg"
+}
+
+######################################################################################################################
+
+### 계좌 등록
+POST http://localhost:8080/api/v1/accounts
+Content-Type: application/json
+
+{
+  "customerToken": "cus_mGo4Ftx3kDdl8K0J",
+  "accountName": "KB",
+  "accountAmt": 30000,
+  "accountOptionGroupList": [
     {
       "ordering": "1",
-      "itemOptionGroupName": "사이즈",
-      "itemOptionList": [
+      "accountOptionGroupName": "사이즈",
+      "accountOptionList": [
         {
           "ordering": 1,
-          "itemOptionName": "SMALL",
-          "itemOptionPrice": 0
+          "accountOptionName": "SMALL",
+          "accountOptionAmt": 0
         },
         {
           "ordering": 2,
-          "itemOptionName": "MEDIUM",
-          "itemOptionPrice": 0
+          "accountOptionName": "MEDIUM",
+          "accountOptionAmt": 0
         },
         {
           "ordering": 3,
-          "itemOptionName": "LARGE",
-          "itemOptionPrice": 0
+          "accountOptionName": "LARGE",
+          "accountOptionAmt": 0
         }
       ]
 
-    },
+    }
+  ]
+}
+
+### 계좌 활성화
+POST http://localhost:8080/api/v1/accounts/change-available
+Content-Type: application/json
+
+{
+  "accountToken": "acc_a2oRW2uf7PlYHwAi"
+}
+
+### 계좌 비활성화
+POST http://localhost:8080/api/v1/accounts/change-not-available
+Content-Type: application/json
+
+{
+  "accountToken": "acc_a2oRW2uf7PlYHwAi"
+}
+
+
+
+
+
+
+### 계좌 등록
+POST http://localhost:8080/api/v1/accounts
+Content-Type: application/json
+
+{
+  "customerToken": "cus_fHncFGP5AWrJNgd8",
+  "accountName": "KB",
+  "accountAmt": 30000,
+  "accountOptionGroupList": [
     {
-      "ordering": "2",
-      "itemOptionGroupName": "컬러",
-      "itemOptionList": [
+      "ordering": "1",
+      "accountOptionGroupName": "사이즈",
+      "accountOptionList": [
         {
           "ordering": 1,
-          "itemOptionName": "RED",
-          "itemOptionPrice": 0
+          "accountOptionName": "SMALL",
+          "accountOptionAmt": 0
         },
         {
           "ordering": 2,
-          "itemOptionName": "GOLD",
-          "itemOptionPrice": 1000
+          "accountOptionName": "MEDIUM",
+          "accountOptionAmt": 0
+        },
+        {
+          "ordering": 3,
+          "accountOptionName": "LARGE",
+          "accountOptionAmt": 0
         }
       ]
+
     }
   ]
 }
 
 ### 아이템 1 활성화
-POST http://localhost:8080/api/v1/items/change-on-sales
+POST http://localhost:8080/api/v1/accounts/change-on-sales
 Content-Type: application/json
 
 {
-  "itemToken": "itm_8v3BDJid9QlIKu8F"
+  "accountToken": "itm_8v3BDJid9QlIKu8F"
 }
 
 ### 아이템 등록 2
-POST http://localhost:8080/api/v1/items
+POST http://localhost:8080/api/v1/accounts
 Content-Type: application/json
 
 {
-    "partnerToken": "ptn_NHOrj9cTvCGlYMHo",
-    "itemName": "양말",
-    "itemPrice": 10000,
-    "itemOptionGroupList": [
+    "customerToken": "ptn_NHOrj9cTvCGlYMHo",
+    "accountName": "양말",
+    "accountAmt": 10000,
+    "accountOptionGroupList": [
         {
             "ordering": "1",
-            "itemOptionGroupName": "사이즈",
-            "itemOptionList": [
+            "accountOptionGroupName": "사이즈",
+            "accountOptionList": [
                 {
                     "ordering": 1,
-                    "itemOptionName": "SMALL",
-                    "itemOptionPrice": 0
+                    "accountOptionName": "SMALL",
+                    "accountOptionAmt": 0
                 },
                 {
                     "ordering": 2,
-                    "itemOptionName": "MEDIUM",
-                    "itemOptionPrice": 0
+                    "accountOptionName": "MEDIUM",
+                    "accountOptionAmt": 0
                 },
                 {
                     "ordering": 3,
-                    "itemOptionName": "LARGE",
-                    "itemOptionPrice": 0
+                    "accountOptionName": "LARGE",
+                    "accountOptionAmt": 0
                 }
             ]
 
         },
         {
             "ordering": "2",
-            "itemOptionGroupName": "컬러",
-            "itemOptionList": [
+            "accountOptionGroupName": "컬러",
+            "accountOptionList": [
                 {
                     "ordering": 1,
-                    "itemOptionName": "RED",
-                    "itemOptionPrice": 0
+                    "accountOptionName": "RED",
+                    "accountOptionAmt": 0
                 },
                 {
                     "ordering": 2,
-                    "itemOptionName": "BlUE",
-                    "itemOptionPrice": 1000
+                    "accountOptionName": "BlUE",
+                    "accountOptionAmt": 1000
                 }
             ]
         }
@@ -107,23 +192,23 @@ Content-Type: application/json
 }
 
 ### 아이템 2 활성화
-POST http://localhost:8080/api/v1/items/change-on-sales
+POST http://localhost:8080/api/v1/accounts/change-on-sales
 Content-Type: application/json
 
 {
-  "itemToken": "itm_bG4ZorvqeEGSlRrK"
+  "accountToken": "itm_bG4ZorvqeEGSlRrK"
 }
 
 ### 아이템 등록 3
-POST http://localhost:8080/api/v1/items
+POST http://localhost:8080/api/v1/accounts
 Content-Type: application/json
 
 {
-  "partnerToken": "ptn_oWkmVAFErP2zgALi",
-  "itemName": "양말",
-  "itemPrice": 10000
+  "customerToken": "ptn_oWkmVAFErP2zgALi",
+  "accountName": "양말",
+  "accountAmt": 10000
 }
 
 ### 아이템 조회
-GET http://localhost:8080/api/v1/items/itm_bG4ZorvqeEGSlRrK
+GET http://localhost:8080/api/v1/accounts/itm_bG4ZorvqeEGSlRrK
 Content-Type: application/json

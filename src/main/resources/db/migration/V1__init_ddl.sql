@@ -18,78 +18,78 @@ index customer_idx02 on customer (created_at);
 
 create
 index customer_idx03 on customer (updated_at);
-/*
--- item
-create table items
+
+-- account
+create table accounts
 (
     id         bigint auto_increment primary key comment 'ID',
-    item_token varchar(255) not null comment 'item_token',
+    account_token varchar(255) not null comment 'account_token',
     customer_id bigint       not null comment '고객 ID',
-    item_name  varchar(255) not null comment '상품명',
-    item_price int(11) not null comment '상품 가격',
+    account_name  varchar(255) not null comment '계좌명',
+    account_amt int(11) not null comment '금액',
     status     varchar(30)  not null default 'PREPARE' comment '상태',
     deleted_at datetime(6) null comment '삭제 일시',
     created_at datetime(6) not null comment '생성 일시',
     updated_at datetime(6) null comment '수정 일시'
-) comment 'items' charset = utf8mb4;
+) comment 'accounts' charset = utf8mb4;
 
 create
-index item_idx01 on items (item_token);
+index account_idx01 on accounts (account_token);
 
 create
-index item_idx02 on items (customer_id);
+index account_idx02 on accounts (customer_id);
 
 create
-index item_idx03 on items (created_at);
+index account_idx03 on accounts (created_at);
 
 create
-index item_idx04 on items (updated_at);
+index account_idx04 on accounts (updated_at);
 
 create
-index item_idx05 on items (deleted_at);
+index account_idx05 on accounts (deleted_at);
 
 
--- item_option_group
-create table item_option_groups
+-- account_option_group
+create table account_option_groups
 (
     id                     bigint auto_increment primary key comment 'ID',
-    item_id                bigint      not null comment '상품 ID',
+    account_id                bigint      not null comment '계좌 ID',
     ordering               tinyint(3) not null comment '정렬순서',
-    item_option_group_name varchar(30) not null comment '옵션그룹명 (색상, 사이즈 등)',
+    account_option_group_name varchar(30) not null comment '옵션그룹명 (색상, 사이즈 등)',
     created_at             datetime(6) not null comment '생성 일시',
     updated_at             datetime(6) null comment '수정 일시'
-) comment 'item_option_groups' charset = utf8mb4;
+) comment 'account_option_groups' charset = utf8mb4;
 
 create
-index item_option_group_idx01 on item_option_groups (item_id);
+index account_option_group_idx01 on account_option_groups (account_id);
 
 create
-index item_option_group_idx02 on item_option_groups (created_at);
+index account_option_group_idx02 on account_option_groups (created_at);
 
 create
-index item_option_group_idx03 on item_option_groups (updated_at);
+index account_option_group_idx03 on account_option_groups (updated_at);
 
 
--- item_option
-create table item_options
+-- account_option
+create table account_options
 (
     id                   bigint auto_increment primary key comment 'ID',
-    item_option_group_id bigint      not null comment '상품 옵션 그룹 ID',
+    account_option_group_id bigint      not null comment '계좌 옵션 그룹 ID',
     ordering             tinyint(3) not null comment '정렬순서',
-    item_option_name     varchar(30) not null comment '옵션명 (빨강, 파랑, XL, L)',
-    item_option_price    int(11) not null comment '상품 옵션 가격',
+    account_option_name     varchar(30) not null comment '옵션명 (빨강, 파랑, XL, L)',
+    account_option_amt    int(11) not null comment '계좌 옵션 금액',
     created_at           datetime(6) not null comment '생성 일시',
     updated_at           datetime(6) null comment '수정 일시'
-) comment 'item_options' charset = utf8mb4;
+) comment 'account_options' charset = utf8mb4;
 
 create
-index item_option_idx01 on item_options (item_option_group_id);
+index account_option_idx01 on account_options (account_option_group_id);
 
 create
-index item_option_idx02 on item_options (created_at);
+index account_option_idx02 on account_options (created_at);
 
 create
-index item_option_idx03 on item_options (updated_at);
+index account_option_idx03 on account_options (updated_at);
 
 
 -- order
@@ -127,80 +127,79 @@ create
 index order_idx05 on orders (updated_at);
 
 
--- order_items
-create table order_items
+-- order_accounts
+create table order_accounts
 (
     id              bigint auto_increment primary key comment 'ID',
     order_id        bigint       not null comment 'order_id',
     order_count     tinyint      not null comment '주문갯수',
     customer_id      bigint       not null comment '고객 ID',
-    item_id         bigint       not null comment '상품 ID',
-    item_name       varchar(255) not null comment '상품명',
-    item_token      varchar(30)  not null comment '상품 token',
-    item_price      int(11) not null comment '상품 가격',
+    account_id         bigint       not null comment '상품 ID',
+    account_name       varchar(255) not null comment '상품명',
+    account_token      varchar(30)  not null comment '상품 token',
+    account_amt      int(11) not null comment '상품 가격',
     delivery_status varchar(30)  not null default 'BEFORE_DELIVERY' comment '상태',
     created_at      datetime(6) not null comment '생성 일시',
     updated_at      datetime(6) null comment '수정 일시'
-) comment 'order_items' charset = utf8mb4;
+) comment 'order_accounts' charset = utf8mb4;
 
 create
-index order_item_idx01 on order_items (order_id);
+index order_account_idx01 on order_accounts (order_id);
 
 create
-index order_item_idx02 on order_items (customer_id);
+index order_account_idx02 on order_accounts (customer_id);
 
 create
-index order_item_idx03 on order_items (item_id);
+index order_account_idx03 on order_accounts (account_id);
 
 create
-index order_item_idx04 on order_items (item_token);
+index order_account_idx04 on order_accounts (account_token);
 
 create
-index order_item_idx05 on order_items (created_at);
+index order_account_idx05 on order_accounts (created_at);
 
 create
-index order_item_idx06 on order_items (updated_at);
+index order_account_idx06 on order_accounts (updated_at);
 
 
--- order_item_option_groups
-create table order_item_option_groups
+-- order_account_option_groups
+create table order_account_option_groups
 (
     id                     bigint auto_increment primary key comment 'ID',
-    order_item_id          bigint       not null comment 'order_item_id',
+    order_account_id          bigint       not null comment 'order_account_id',
     ordering               tinyint(3) not null comment '정렬순서',
-    item_option_group_name varchar(255) not null comment '상품 옵션 그룹명',
+    account_option_group_name varchar(255) not null comment '상품 옵션 그룹명',
     created_at             datetime(6) not null comment '생성 일시',
     updated_at             datetime(6) null comment '수정 일시'
-) comment 'order_item_option_groups' charset = utf8mb4;
+) comment 'order_account_option_groups' charset = utf8mb4;
 
 create
-index order_item_option_groups_idx01 on order_item_option_groups (order_item_id);
+index order_account_option_groups_idx01 on order_account_option_groups (order_account_id);
 
 create
-index order_item_option_groups_idx02 on order_item_option_groups (created_at);
+index order_account_option_groups_idx02 on order_account_option_groups (created_at);
 
 create
-index order_item_option_groups_idx03 on order_item_option_groups (updated_at);
+index order_account_option_groups_idx03 on order_account_option_groups (updated_at);
 
 
--- order_item_options
-create table order_item_options
+-- order_account_options
+create table order_account_options
 (
     id                         bigint auto_increment primary key comment 'ID',
-    order_item_option_group_id bigint       not null comment 'order_item_option_group_id',
+    order_account_option_group_id bigint       not null comment 'order_account_option_group_id',
     ordering                   tinyint(3) not null comment '정렬순서',
-    item_option_name           varchar(255) not null comment '상품 옵션명',
-    item_option_price          int(11) not null comment '상품 옵션 가격',
+    account_option_name           varchar(255) not null comment '상품 옵션명',
+    account_option_amt          int(11) not null comment '상품 옵션 가격',
     created_at                 datetime(6) not null comment '생성 일시',
     updated_at                 datetime(6) null comment '수정 일시'
-) comment 'order_item_options' charset = utf8mb4;
+) comment 'order_account_options' charset = utf8mb4;
 
 create
-index order_item_options_idx01 on order_item_options (order_item_option_group_id);
+index order_account_options_idx01 on order_account_options (order_account_option_group_id);
 
 create
-index order_item_options_idx02 on order_item_options (created_at);
+index order_account_options_idx02 on order_account_options (created_at);
 
 create
-index order_item_options_idx03 on order_item_options (updated_at);
- */
+index order_account_options_idx03 on order_account_options (updated_at);
